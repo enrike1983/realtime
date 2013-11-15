@@ -7,7 +7,6 @@ var app = express();
 var socket_glob;
 
 // Configuration
-
 app.configure(function(){
     app.set('port', process.env.PORT || 80);
     app.set('views', __dirname + '/views');
@@ -34,7 +33,6 @@ app.configure('production', function(){
 });
 
 // Routes
-
 app.get('/arduino', function(req, res) {
    res.render('okEvent.twig');
 });
@@ -42,26 +40,21 @@ app.get('/prova', function(req, res) {
     res.render('index.twig');
 });
 
-// Routes
-
 var server = http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port "+ app.get('port') +" in "+ app.get('env') +" mode.");
 });
 
-/*
- * Socket.IO
- */
-
+//Socket.io init
 var io = socketio.listen(server);
 
-/** removed logging **/
+// removed logging
 io.configure(function() {
     io.enable('browser client minification');
     io.set('log level', 1);
 });
 
+// main listener: Here we will put all the events we want to catch
 io.sockets.on('connection', function (socket) {
-    //socket_glob = socket;
     socket.on('arduino_response', function(){
         io.sockets.emit('evento');
     });
