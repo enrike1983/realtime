@@ -35,8 +35,7 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/emitter', function(req, res) {
-   socket_glob.emit('evento', { hello: 'world' });
+app.get('/arduino', function(req, res) {
    res.render('okEvent.twig');
 });
 app.get('/prova', function(req, res) {
@@ -55,15 +54,15 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 
 var io = socketio.listen(server);
 
+/** removed logging **/
 io.configure(function() {
     io.enable('browser client minification');
     io.set('log level', 1);
 });
 
 io.sockets.on('connection', function (socket) {
-    socket_glob = socket;
-    socket.emit('evento', { hello: 'world' });
-    socket.on('to_server_event', function (data) {
-        console.log(data);
+    //socket_glob = socket;
+    socket.on('arduino_response', function(){
+        io.sockets.emit('evento');
     });
 });

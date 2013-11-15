@@ -5,7 +5,7 @@
     <script>
         var socket = io.connect('http://localhost');
         socket.on('evento', function (data) {
-            //console.log(data);
+            //console.log('arrivato!');
             $('#messages').append("<li>test</li>");
         });
     </script>
