@@ -1,0 +1,18 @@
+<html>
+<head>
+    <script src='//code.jquery.com/jquery-1.7.2.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost');
+        socket.on('evento', function (data) {
+            //console.log(data);
+            $('#messages').append("<li>test</li>");
+        });
+    </script>
+</head>
+    <body>
+        {{ 'questo è twig!' }}
+        <ul id="messages">
+        </ul>
+    </body>
+</html>
