@@ -1,3 +1,4 @@
+var config = require('./config');
 var express = require('express'),
     socketio = require('socket.io'),
     http = require('http'),
@@ -32,6 +33,8 @@ app.configure('production', function(){
     app.use(express.errorHandler());
 });
 
+/*****************************************************************/
+
 // Routes
 app.get('/arduino', function(req, res) {
    res.render('okEvent.twig');
@@ -43,6 +46,8 @@ app.get('/prova', function(req, res) {
 var server = http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port "+ app.get('port') +" in "+ app.get('env') +" mode.");
 });
+
+/******************************************************************/
 
 //Socket.io init
 var io = socketio.listen(server);
@@ -59,3 +64,5 @@ io.sockets.on('connection', function (socket) {
         io.sockets.emit('evento');
     });
 });
+
+/******************************************************************/

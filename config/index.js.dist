@@ -1,0 +1,18 @@
+// DATABASE CONNECT
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'user',
+    password : 'password',
+    database: 'database_name'
+});
+
+connection.connect();
+
+/*connection.query('SELECT * FROM access', function(err, rows, fields) {
+    if (err) throw err;
+
+    console.log('The result is: ', rows[0].name);
+});
+
+connection.end();*/
