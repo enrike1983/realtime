@@ -33,16 +33,6 @@ app.configure('production', function(){
     app.use(express.errorHandler());
 });
 
-/*****************************************************************/
-
-// Routes
-app.get('/arduino', function(req, res) {
-   res.render('okEvent.twig');
-});
-app.get('/prova', function(req, res) {
-    res.render('index.twig');
-});
-
 var server = http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port "+ app.get('port') +" in "+ app.get('env') +" mode.");
 });
@@ -58,11 +48,19 @@ io.configure(function() {
     io.set('log level', 1);
 });
 
-// main listener: Here we will put all the events we want to catch
-io.sockets.on('connection', function (socket) {
-    socket.on('arduino_response', function(){
-        io.sockets.emit('evento');
-    });
-});
-
 /******************************************************************/
+
+// Routes
+app.get('/arduino', function(req, res) {
+
+    console.log('sending data to frontend client...');
+
+    io.sockets.in(req.sessionID).emit('evento');
+    res.render('okEvent.twig');
+});
+app.get('/prova', function(req, res) {
+
+    console.log('rendering frontend client...');
+
+    res.render('index.twig');
+});
