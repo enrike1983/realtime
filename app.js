@@ -1,4 +1,4 @@
-//var config = require('./config');
+var config = require('./config');
 var express = require('express'),
     socketio = require('socket.io'),
     http = require('http'),
@@ -56,11 +56,11 @@ app.get('/arduino', function(req, res) {
     console.log('sending data to frontend client...');
 
     io.sockets.in(req.sessionID).emit('evento');
-    res.render('okEvent.twig');
+    res.send(200);
 });
 app.get('/prova', function(req, res) {
 
     console.log('rendering frontend client...');
 
-    res.render('index.twig');
+    res.render('index.twig', { server: config.server_IP });
 });
