@@ -15,4 +15,14 @@ connection.connect();
     console.log('The result is: ', rows[0].name);
 });
 
-connection.end();*/
+connection.end();
+
+var config = {
+	'server_IP': '127.0.0.1'
+}
+
+
+
+
+
+*/
