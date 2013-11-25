@@ -19,6 +19,7 @@
   "devDependencies": {
     "socket.io": "~0.9.16",
     "express": "~3.4.4",
-    "twig": "~0.5.12"
+    "twig": "~0.5.12",
+    "mysql": "~2.0.0-alpha9"
   }
 }
