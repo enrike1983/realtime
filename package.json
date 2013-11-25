@@ -1,0 +1,24 @@
+{
+  "name": "H-Makers",
+  "version": "0.0.1",
+  "description": "Smart Objects",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/enrike1983/realtime.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/enrike1983/realtime/issues"
+  },
+  "homepage": "https://github.com/enrike1983/realtime",
+  "devDependencies": {
+    "socket.io": "~0.9.16",
+    "express": "~3.4.4",
+    "twig": "~0.5.12"
+  }
+}
