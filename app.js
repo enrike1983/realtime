@@ -1,4 +1,4 @@
-var config = require('./config');
+//var config = require('./config');
 var express = require('express'),
     socketio = require('socket.io'),
     http = require('http'),
