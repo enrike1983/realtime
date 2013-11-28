@@ -5,13 +5,17 @@
     <script>
         var socket = io.connect("http://{{ server }}");
         socket.on('evento', function (data) {
-            $('#messages').append("<li>test</li>");
+            $('#temperature').text(data.temp);
+            $('#humidity').text(data.hum);
         });
     </script>
 </head>
     <body>
-        {{ 'questo è twig!' }}
-        <ul id="messages">
-        </ul>
+        Temperatura attuale (C):<br/>
+        <div id="temperature">
+        </div>
+        Umidità attuale (%):<br/>
+        <div id="humidity">
+        </div>
     </body>
 </html>

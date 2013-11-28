@@ -53,9 +53,12 @@ io.configure(function() {
 // Routes
 app.get('/arduino', function(req, res) {
 
+    remote_temp = req.query.t;
+    remote_hum = req.query.h;
+
     console.log('sending data to frontend client...');
 
-    io.sockets.in(req.sessionID).emit('evento');
+    io.sockets.in(req.sessionID).emit('evento', { temp: remote_temp, hum: remote_hum });
     res.send(200);
 });
 app.get('/prova', function(req, res) {
