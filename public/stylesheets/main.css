@@ -1,0 +1,20 @@
+/* line 2, ../scss/main.scss */
+#wrapper #recycool {
+  height: 600px;
+  text-align: center;
+  position: relative;
+}
+/* line 6, ../scss/main.scss */
+#wrapper #recycool div {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+/* line 15, ../scss/main.scss */
+#wrapper #recycool input {
+  display: none;
+}

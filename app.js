@@ -10,8 +10,9 @@ var socket_glob;
 // Configuration
 app.configure(function(){
     app.set('port', process.env.PORT || 80);
-    app.set('views', __dirname + '/views');
+    app.set('views', __dirname + '/public');
     app.set('view engine', 'twig');
+    app.set('view cache', false);
     app.set('twig options', {
         strict_variables: false,
         cache: false,
@@ -51,8 +52,15 @@ io.configure(function() {
 /******************************************************************/
 
 // Routes
-app.get('/arduino', function(req, res) {
 
+app.get('/', function(req,res) {
+    res.render('index.html.twig', { server: config.server_IP });
+});
+
+app.get('/arduino', function(req, res) {
+    //apertura/chiusura coperchio
+    //quanto è pieno il bidone, se è pieno o vuoto
+    //peso
     remote_temp = req.query.t;
     remote_hum = req.query.h;
 
